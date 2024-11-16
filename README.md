@@ -5,20 +5,49 @@ Users can create, view, edit, and delete their portfolios. The platform also sup
 
 ## Features
 
-- **User Authentication**:
+- **User Features**:
 
-  - Secure login and registration.
-  - Two-Factor Authentication (2FA) for added security.
+  - User registration and login with 2FA (Two-Factor Authentication).
+  - Create portfolio with image uploads powered by Cloudinary.
+  - View other users’ portfolios.
+  - Real-time financial data and graph visualization using the Alpha Vantage API.
 
-- **Portfolio Management**:
+- **Admin Features**:
 
-  - Create and view portfolios.
-  - Support for image uploads via Cloudinary.
+  - Promote or downgrade users between Admin and Editor roles.
+  - Edit or delete portfolios created by users.
+  - Notify portfolio owners via email for portfolio updates or deletions.
 
-- **Admin Dashboard**:
-  - Manage all users and portfolios.
-  - Edit and delete any user's portfolio.
+- **Additional Features**:
+  - Role-based access control.
+  - Email notifications using Nodemailer.
+  - Responsive portfolio image galleries.
 
+## Tools and Technologies
+
+- **Backend**
+  
+  - Node.js with Express.js: Server and API.
+  - Mongoose: MongoDB object modeling.
+  - Passport.js: Authentication, including 2FA.
+ 
+- **Frontend**
+  
+  - EJS: Template engine for dynamic HTML rendering.
+  - Chart.js: Financial data visualization.
+    
+- **APIs**
+  
+  - Cloudinary: Image hosting and management.
+  - Alpha Vantage: Financial data API.
+  - SendGrid: Email notifications.
+
+- **Other Tools**
+  
+  - Axios: HTTP requests.
+  - Multer: File uploads.
+  - Dotenv: Environment variable management.
+    
 ## Project Structure
 
 ```
@@ -37,6 +66,7 @@ portfolio-platform/
 │   ├── 2fa.js                # Routes for managing Two-Factor Authentication
 │   ├── auth.js               # Routes for user authentication (login, register, logout)
 │   ├── portfolio.js          # Routes for portfolio management
+│   ├── financial.js          # Routes for retrieving data from alpha vintage api
 ├── utils/
 │   ├── mailer.js             # Utility for sending emails
 ├── views/
@@ -50,6 +80,7 @@ portfolio-platform/
 │   │   ├── navbar.ejs        # Navbar partial
 │   │   ├── footer.ejs        # Footer partial
 │   ├── createPortfolio.ejs   # Portfolio creation page
+│   ├── financial.ejs         # Graph of digital curencies
 │   ├── layout.ejs            # Main layout template
 │   ├── login.ejs             # Login page
 │   ├── register.ejs          # Registration page
@@ -97,6 +128,7 @@ portfolio-platform/
    CLOUDINARY_CLOUD_NAME=<your_cloudinary_cloud_name>
    CLOUDINARY_API_KEY=<your_cloudinary_api_key>
    CLOUDINARY_API_SECRET=<your_cloudinary_api_secret>
+   ALPHA_VANTAGE_API_KEY=<your_alph_vintage_api_key>
    ```
 
 4. Start the development server:
