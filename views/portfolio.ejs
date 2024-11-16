@@ -15,7 +15,7 @@
   <% } %>
 
   <div class="two-factor-container">
-    <% if (user.twoFactorEnabled) { %>
+    <% if (user && user.twoFactorEnabled) { %>
     <form action="/2fa/disable" method="POST">
       <button type="submit" class="button button-danger">Disable 2FA</button>
     </form>

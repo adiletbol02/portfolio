@@ -6,13 +6,13 @@ const Portfolio = require("../models/Portfolio");
 
 // Portfolio Home (Protected Route)
 router.get("/", ensureAuthenticated, async (req, res) => {
-  //res.render("portfolio");
   try {
     const portfolio = await Portfolio.findOne({ owner: req.user.email });
-    if (!portfolio) {
-      return res.render("portfolio", { portfolio: null });
-    }
-    res.render("portfolio", { portfolio });
+    res.render("portfolio", {
+      user: req.user, // Pass the user object
+      portfolio: portfolio || null, // Pass portfolio if it exists, otherwise null
+      layout: true, // Set layout if using express-ejs-layouts
+    });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
