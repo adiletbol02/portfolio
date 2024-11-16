@@ -27,10 +27,6 @@ app.use(
   })
 );
 
-app.use((req, res, next) => {
-  res.locals.user = req.user; // Make user info available in all views
-  next();
-});
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash("success_msg");
@@ -40,6 +36,10 @@ app.use((req, res, next) => {
 });
 app.use(passport.initialize());
 app.use(passport.session());
+app.use((req, res, next) => {
+  res.locals.user = req.user; // Make user info available in all views
+  next();
+});
 
 // MongoDB Connection
 mongoose

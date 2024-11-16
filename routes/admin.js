@@ -3,6 +3,7 @@ const router = express.Router();
 const ensureAuthenticated = require("../middlewares/auth");
 const ensureAdmin = require("../middlewares/admin");
 const Portfolio = require("../models/Portfolio");
+const User = require("../models/User");
 const sendEmail = require("../utils/mailer");
 
 // View All Portfolios
@@ -70,6 +71,39 @@ router.post("/delete/:id", ensureAdmin, async (req, res) => {
     );
 
     res.redirect("/admin");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
+});
+
+// List all users
+router.get("/users", ensureAdmin, async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.render("admin/users", { users });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
+});
+
+// Promote a user to admin
+router.post("/promote/:id", ensureAdmin, async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.params.id, { role: "admin" });
+    res.redirect("/admin/users");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
+});
+
+// Downgrade a user to editor
+router.post("/downgrade/:id", ensureAdmin, async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.params.id, { role: "editor" });
+    res.redirect("/admin/users");
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");

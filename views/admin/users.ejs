@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - User Management</title>
+  </head>
+  <body>
+    <h1>Manage Users</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(user => { %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.firstName %></td>
+          <td><%= user.lastName %></td>
+          <td><%= user.role %></td>
+          <td>
+            <% if (user.role === "editor") { %>
+            <form
+              action="/admin/promote/<%= user._id %>"
+              method="POST"
+              style="display: inline"
+            >
+              <button type="submit">Promote to Admin</button>
+            </form>
+            <% } else if (user.role === "admin") { %>
+            <form
+              action="/admin/downgrade/<%= user._id %>"
+              method="POST"
+              style="display: inline"
+            >
+              <button type="submit">Downgrade to Editor</button>
+            </form>
+            <% } %>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </body>
+</html>
