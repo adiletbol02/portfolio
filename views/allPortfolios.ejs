@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All Portfolios</title>
+  </head>
+  <body>
+    <h1>All Portfolios</h1>
+    <ul>
+      <% portfolios.forEach(portfolio => { %>
+      <li>
+        <strong><%= portfolio.title %></strong> by <%= portfolio.owner %>
+        <a href="/portfolio/view/<%= portfolio.owner %>">View Portfolio</a>
+      </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>

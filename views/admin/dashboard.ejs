@@ -1,0 +1,33 @@
+<h1>Admin Dashboard</h1>
+<table border="1" cellpadding="10">
+  <thead>
+    <tr>
+      <th>Owner</th>
+      <th>Title</th>
+      <th>Updated At</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% portfolios.forEach(portfolio => { %>
+    <tr>
+      <td><%= portfolio.owner %></td>
+      <td><%= portfolio.title %></td>
+      <td>
+        <%= portfolio.updatedAt ? new Date(portfolio.updatedAt).toLocaleString()
+        : "Never" %>
+      </td>
+      <td>
+        <a href="/admin/edit/<%= portfolio._id %>">Edit</a>
+        <form
+          action="/admin/delete/<%= portfolio._id %>"
+          method="POST"
+          style="display: inline"
+        >
+          <button type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>

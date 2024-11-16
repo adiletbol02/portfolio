@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <%= typeof title !== 'undefined' ? title : "Portfolio Platform" %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+    <main><%- body %></main>
+    <%- include('partials/footer') %>
+  </body>
+</html>

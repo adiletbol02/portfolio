@@ -1,0 +1,8 @@
+<h1>Set Up 2FA</h1>
+<p>Scan this QR code with your authenticator app:</p>
+<img src="<%= qrCodeUrl %>" alt="QR Code" />
+<form action="/2fa/verify" method="POST">
+  <label for="token">Enter the code from your app:</label>
+  <input type="text" id="token" name="token" required />
+  <button type="submit">Verify</button>
+</form>

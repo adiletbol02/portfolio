@@ -1,0 +1,28 @@
+<div class="portfolio-container">
+  <h1>Your Portfolio</h1>
+
+  <% if (portfolio) { %>
+  <h2><%- portfolio.title %></h2>
+  <p><%- portfolio.description %></p>
+  <div class="image-gallery">
+    <% portfolio.images.forEach(image => { %>
+    <img src="<%- image %>" alt="Portfolio Image" />
+    <% }); %>
+  </div>
+  <% } else { %>
+  <p>You did not create a portfolio.</p>
+  <a href="/portfolio/create" class="button">Create Portfolio</a>
+  <% } %>
+
+  <div class="two-factor-container">
+    <% if (user.twoFactorEnabled) { %>
+    <form action="/2fa/disable" method="POST">
+      <button type="submit" class="button button-danger">Disable 2FA</button>
+    </form>
+    <% } else { %>
+    <form action="/2fa/enable" method="GET">
+      <button type="submit" class="button button-success">Enable 2FA</button>
+    </form>
+    <% } %>
+  </div>
+</div>

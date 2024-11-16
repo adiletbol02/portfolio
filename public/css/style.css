@@ -1,0 +1,238 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+nav {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Portfolio styles */
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  color: #333;
+}
+
+.portfolio-container {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-container h2 {
+  color: #555;
+}
+
+.portfolio-container p {
+  font-size: 1.1em;
+  color: #666;
+}
+
+.image-gallery {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.image-gallery img {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.image-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .image-gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-gallery img {
+    margin-bottom: 15px;
+    width: 90%;
+  }
+}
+
+/* Buttons */
+button,
+a.button {
+  display: inline-block;
+  background-color: #5cb85c;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button:hover,
+a.button:hover {
+  background-color: #4cae4c;
+}
+
+/* Center the form on the page */
+.auth-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.auth-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-container form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.auth-container form input,
+.auth-container form select,
+.auth-container form button {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.auth-container form input:focus,
+.auth-container form select:focus {
+  border-color: #5cb85c;
+  outline: none;
+  box-shadow: 0 0 5px rgba(92, 184, 92, 0.5);
+}
+
+.auth-container form button {
+  background-color: #5cb85c;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+.auth-container form button:hover {
+  background-color: #4cae4c;
+}
+
+.auth-container a {
+  text-align: center;
+  color: #5cb85c;
+  text-decoration: none;
+}
+
+.auth-container a:hover {
+  text-decoration: underline;
+}
+.button {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 1em;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button-success {
+  background-color: #28a745;
+}
+
+.button-success:hover {
+  background-color: #218838;
+}
+
+.button-danger {
+  background-color: #dc3545;
+}
+
+.button-danger:hover {
+  background-color: #c82333;
+}
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+}

@@ -1,0 +1,8 @@
+<nav>
+  <a href="/portfolio">My Portfolio</a>
+  <a href="/portfolio/all">Look Other Portfolios</a>
+  <% if (user && user.role === "admin") { %>
+  <a href="/admin" class="admin">Admin Panel</a>
+  <% } %>
+  <a href="/logout">Logout</a>
+</nav>

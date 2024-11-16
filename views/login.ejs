@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <h1>Login</h1>
+      <% if (message && message.length > 0) { %>
+      <p style="color: red"><%= message[0] %></p>
+      <% } %>
+      <form action="/login" method="POST">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+        <button type="submit">Login</button>
+      </form>
+      <a href="/register">Don't have an account? Register</a>
+    </div>
+
+    <% if (show2FAModal) { %>
+    <div id="twoFAModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2>Two-Factor Authentication</h2>
+        <form action="/login/2fa" method="POST">
+          <input type="hidden" name="email" value="<%= user.email %>" />
+          <label for="token">Enter 2FA Code:</label>
+          <input type="text" id="token" name="token" required />
+          <button type="submit">Authenticate</button>
+        </form>
+      </div>
+    </div>
+    <% } %>
+
+    <script>
+      // Open the modal if 2FA is required
+      <% if (show2FAModal) { %>
+        document.getElementById("twoFAModal").style.display = "block";
+      <% } %>
+
+      // Close modal function
+      function closeModal() {
+        document.getElementById("twoFAModal").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
