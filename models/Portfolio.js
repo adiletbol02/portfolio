@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 
 const PortfolioSchema = new mongoose.Schema(
   {
-    owner: { type: String, required: true }, // Email of the user
+    owner: { type: String, required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
-    images: { type: [String], required: true }, // Array of image URLs
+    images: { type: [String], required: true },
   },
   {
-    timestamps: true, // Automatically adds createdAt and updatedAt fields
+    timestamps: true,
   }
 );
 

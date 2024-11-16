@@ -34,7 +34,6 @@ footer {
   width: 100%;
 }
 
-/* Portfolio styles */
 h1 {
   text-align: center;
   margin-top: 20px;
@@ -90,7 +89,6 @@ h1 {
   }
 }
 
-/* Buttons */
 button,
 a.button {
   display: inline-block;
@@ -108,7 +106,6 @@ a.button:hover {
   background-color: #4cae4c;
 }
 
-/* Center the form on the page */
 .auth-container {
   width: 100%;
   max-width: 400px;
@@ -200,9 +197,8 @@ a.button:hover {
   background-color: #c82333;
 }
 
-/* Modal Styles */
 .modal {
-  display: none; /* Hidden by default */
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -240,13 +236,13 @@ a.button:hover {
 .current-images {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Space between images */
+  gap: 20px;
 }
 .current-images div {
   text-align: center;
 }
 .current-images img {
-  width: 150px; /* Adjust image size as needed */
+  width: 150px;
   height: auto;
   border: 1px solid #ccc;
   border-radius: 5px;

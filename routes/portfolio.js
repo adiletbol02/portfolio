@@ -3,16 +3,16 @@ const router = express.Router();
 const sendEmail = require("../utils/mailer");
 const ensureAuthenticated = require("../middlewares/auth");
 const Portfolio = require("../models/Portfolio");
-const upload = require("../config/multer"); // Multer setup
+const upload = require("../config/multer");
 
-// Portfolio Home (Protected Route)
+// Portfolio Home
 router.get("/", ensureAuthenticated, async (req, res) => {
   try {
     const portfolio = await Portfolio.findOne({ owner: req.user.email });
     res.render("portfolio", {
-      user: req.user, // Pass the user object
-      portfolio: portfolio || null, // Pass portfolio if it exists, otherwise null
-      layout: true, // Set layout if using express-ejs-layouts
+      user: req.user,
+      portfolio: portfolio || null,
+      layout: true,
     });
   } catch (err) {
     console.error(err);
@@ -20,19 +20,19 @@ router.get("/", ensureAuthenticated, async (req, res) => {
   }
 });
 
-// Portfolio Creation Page (Protected Route)
+// Portfolio Creation Page
 router.get("/create", ensureAuthenticated, (req, res) => {
   res.render("createPortfolio");
 });
 
-// Handle Portfolio Creation (Protected Route)
+// Handle Portfolio Creation
 router.post(
   "/create",
   ensureAuthenticated,
   upload.array("images", 3),
   async (req, res) => {
     try {
-      const { title, description, images } = req.body;
+      const { title, description } = req.body;
 
       // Check if the user already has a portfolio
       const existingPortfolio = await Portfolio.findOne({

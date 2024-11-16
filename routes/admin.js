@@ -49,7 +49,7 @@ router.post(
         return res.status(404).send("Portfolio not found");
       }
 
-      const ownerEmail = portfolio.owner; // Assuming owner is stored as an email
+      const ownerEmail = portfolio.owner;
       const owner = await User.findOne({ email: ownerEmail });
       if (!owner) {
         return res.status(404).send("Owner not found");
@@ -66,14 +66,11 @@ router.post(
         );
       }
 
-      // Handle new image uploads
       const newImages = req.files.map((file) => file.path);
 
-      // Update portfolio fields
       portfolio.title = req.body.title || portfolio.title;
       portfolio.description = req.body.description || portfolio.description;
 
-      // Append new images to the existing image array
       if (newImages.length > 0) {
         portfolio.images.push(...newImages);
       }
@@ -106,7 +103,7 @@ router.post("/delete/:id", ensureAdmin, async (req, res) => {
       return res.status(404).send("Portfolio not found");
     }
 
-    const ownerEmail = portfolio.owner; // Assuming owner is stored as an email
+    const ownerEmail = portfolio.owner;
     const owner = await User.findOne({ email: ownerEmail });
     if (!owner) {
       return res.status(404).send("Owner not found");

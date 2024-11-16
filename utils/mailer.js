@@ -1,21 +1,20 @@
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  service: "gmail", // Or use your preferred email service
+  service: "gmail",
   auth: {
-    user: process.env.EMAIL_USER, // Your email
-    pass: process.env.EMAIL_PASS, // Your email password or app-specific password
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
-// Function to send an email
 const sendEmail = async (to, subject, text) => {
   try {
     await transporter.sendMail({
-      from: '"Portfolio Platform" <your_email@gmail.com>', // Sender address
-      to, // Receiver address
-      subject, // Subject line
-      text, // Plain text body
+      from: `"Portfolio Platform" <${process.env.EMAIL_USER}>`,
+      to,
+      subject,
+      text,
     });
     console.log(`Email sent to ${to}`);
   } catch (error) {

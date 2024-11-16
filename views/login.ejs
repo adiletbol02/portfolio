@@ -38,12 +38,10 @@
     <% } %>
 
     <script>
-      // Open the modal if 2FA is required
       <% if (show2FAModal) { %>
         document.getElementById("twoFAModal").style.display = "block";
       <% } %>
 
-      // Close modal function
       function closeModal() {
         document.getElementById("twoFAModal").style.display = "none";
       }

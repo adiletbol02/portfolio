@@ -61,7 +61,7 @@ router.post(
         `Hi ${firstName},\n\nWelcome to Portfolio Platform! We're excited to have you on board.\n\nBest Regards,\nPortfolio Platform Team`
       );
 
-      res.redirect("/login"); // Redirect to login page on success
+      res.redirect("/login");
     } catch (err) {
       console.error(err);
       res.status(500).send("Server error");
@@ -71,9 +71,9 @@ router.post(
 
 router.get("/login", (req, res) => {
   res.render("login", {
-    message: req.flash("error"), // Error message if any
-    show2FAModal: false, // Default value for the modal
-    user: null, // No user data for GET request
+    message: req.flash("error"),
+    show2FAModal: false,
+    user: null,
     layout: false,
   });
 });
@@ -86,7 +86,6 @@ router.post(
   }),
   (req, res) => {
     if (req.user.twoFactorEnabled) {
-      // Render login page with 2FA modal
       res.render("login", {
         show2FAModal: true,
         user: req.user,

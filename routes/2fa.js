@@ -11,7 +11,7 @@ router.post("/disable", ensureAuthenticated, async (req, res) => {
   try {
     await User.findByIdAndUpdate(req.user._id, {
       twoFactorEnabled: false,
-      twoFactorSecret: null, // Optionally remove the secret
+      twoFactorSecret: null,
     });
     console.log("2FA disabled for user:", req.user.email);
     res.redirect("/portfolio");
@@ -117,7 +117,7 @@ router.post("/login/2fa", async (req, res) => {
         console.error(err);
         return res.status(500).send("Login error");
       }
-      res.redirect("/portfolio"); // Redirect to user's dashboard
+      res.redirect("/portfolio");
     });
   } else {
     res.status(400).send("Invalid 2FA code");
