@@ -236,3 +236,18 @@ a.button:hover {
   color: black;
   text-decoration: none;
 }
+
+.current-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between images */
+}
+.current-images div {
+  text-align: center;
+}
+.current-images img {
+  width: 150px; /* Adjust image size as needed */
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
