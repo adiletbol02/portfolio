@@ -8,6 +8,7 @@ const authRoutes = require("./routes/auth");
 const portfolioRoutes = require("./routes/portfolio");
 const adminRoutes = require("./routes/admin");
 const twofaROutes = require("./routes/2fa");
+const financialRoutes = require("./routes/financial");
 const expressLayouts = require("express-ejs-layouts");
 const flash = require("connect-flash");
 
@@ -62,6 +63,7 @@ app.use("/", authRoutes);
 app.use("/portfolio", portfolioRoutes);
 app.use("/admin", adminRoutes);
 app.use("/2fa", twofaROutes);
+app.use("/financial", financialRoutes);
 
 // Start Server
 const PORT = process.env.PORT || 3000;

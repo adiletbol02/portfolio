@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Financial Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+      }
+      canvas {
+        width: 100%;
+        max-width: 800px;
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Financial Data for <%= symbol %></h1>
+      <canvas id="financialChart"></canvas>
+
+      <form action="/financial" method="GET">
+        <label for="symbol">Enter Stock Symbol:</label>
+        <input
+          type="text"
+          id="symbol"
+          name="symbol"
+          placeholder="e.g., AAPL"
+          required
+        />
+        <button type="submit">Get Data</button>
+      </form>
+    </div>
+
+    <script>
+      const labels = <%- JSON.stringify(labels) %>;
+      const prices = <%- JSON.stringify(prices) %>;
+
+      const ctx = document.getElementById('financialChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Stock Price (USD)',
+            data: prices,
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 2,
+            fill: false,
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: { title: { display: true, text: 'Date' } },
+            y: { title: { display: true, text: 'Price (USD)' } },
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
