@@ -4,14 +4,16 @@
     <title>View Portfolio</title>
   </head>
   <body>
-    <h1><%- portfolio.title %></h1>
-    <p>Owner: <%= portfolio.owner %></p>
-    <p><%- portfolio.description %></p>
-    <div>
-      <% portfolio.images.forEach(image => { %>
-      <img src="<%= image %>" alt="Portfolio Image" style="width: 200px" />
-      <% }); %>
+    <div class="portfolio-container">
+      <h1><%- portfolio.title %></h1>
+      <p><%- portfolio.description %></p>
+      <p>Owner: <%= portfolio.owner %></p>
+      <div class="image-gallery">
+        <% portfolio.images.forEach(image => { %>
+        <img src="<%= image %>" alt="Portfolio Image" style="width: 200px" />
+        <% }); %>
+      </div>
+      <a href="/portfolio/all">Back to All Portfolios</a>
     </div>
-    <a href="/portfolio/all">Back to All Portfolios</a>
   </body>
 </html>
