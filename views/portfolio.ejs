@@ -2,11 +2,12 @@
   <h1>Your Portfolio</h1>
 
   <% if (portfolio) { %>
-  <h2><%- portfolio.title %></h2>
-  <p><%- portfolio.description %></p>
+  <h2><%= portfolio.title %></h2>
+  <p><%= portfolio.description %></p>
+
   <div class="image-gallery">
     <% portfolio.images.forEach(image => { %>
-    <img src="<%- image %>" alt="Portfolio Image" />
+    <img src="<%= image %>" alt="Portfolio Image" style="width: 200px" />
     <% }); %>
   </div>
   <% } else { %>
