@@ -7,6 +7,10 @@ const router = express.Router();
 const { check, validationResult } = require("express-validator");
 const sendEmail = require("../utils/mailer");
 
+router.get("/", (req, res) => {
+  res.redirect("/login");
+});
+
 // Render Registration Page
 router.get("/register", (req, res) => {
   res.render("register", { layout: false });
